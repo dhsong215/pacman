@@ -1,7 +1,10 @@
-// 이 스크립트는 고스트의 기본적인 행동 제어문을 가지는 클래스를 선언합니다.
 using UnityEngine;
 
 [RequireComponent(typeof(Ghost))]
+
+/// <summary>
+/// 고스트 단순 행동제어 함수
+/// <summary>
 public class GhostBehaviour : MonoBehaviour
 {
     public Ghost Ghost { get; private set; }
