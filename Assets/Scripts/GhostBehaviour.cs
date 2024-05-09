@@ -1,4 +1,4 @@
-// 이 스크립트는 Ghost들의 모드를 관리합니다.
+// 이 스크립트는 고스트의 기본적인 행동 제어문을 가지는 클래스를 선언합니다.
 using UnityEngine;
 
 [RequireComponent(typeof(Ghost))]
