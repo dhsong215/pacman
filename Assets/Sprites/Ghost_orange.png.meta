@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b9badb185e30764b8941b5a049bdb60
+guid: 21907226d3c6c534f95bd6298ab8ea57
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ghosty_pink_0
+      name: Ghost_orange_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,20 +118,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea2d4ec94e68ceb43a1232c0eef7943a
-      internalID: -1502457477
+      spriteID: 5d566c30f5b06b54da4d236e1072b375
+      internalID: 1293742558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_1
+      name: Ghost_orange_1
       rect:
         serializedVersion: 2
         x: 16
@@ -139,20 +139,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f3460abf3c03574a8b1566b7a85d86d
-      internalID: -1549704772
+      spriteID: 2e55ba6d00da60147b822e3760696bc4
+      internalID: 1563776839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_2
+      name: Ghost_orange_2
       rect:
         serializedVersion: 2
         x: 32
@@ -160,20 +160,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba6f469824fa9384bbbf0857fba0b7b4
-      internalID: 1703402677
+      spriteID: f3c6ac295399f9942b3e4a5440dcc917
+      internalID: 415771976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_3
+      name: Ghost_orange_3
       rect:
         serializedVersion: 2
         x: 0
@@ -181,20 +181,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f9d5d940559a4148b8220ce9e67577b
-      internalID: -948033006
+      spriteID: d9301fa9ceaffb743a874ecaced7b15b
+      internalID: -667927834
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_4
+      name: Ghost_orange_4
       rect:
         serializedVersion: 2
         x: 16
@@ -202,20 +202,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77fb24bf2085cb241b93402b1fd61089
-      internalID: -363252731
+      spriteID: ca83878484ecee740bfdc620f661077b
+      internalID: -1195766869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_5
+      name: Ghost_orange_5
       rect:
         serializedVersion: 2
         x: 32
@@ -223,20 +223,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ff903f1087ee3e4589d8e76b715d0b0
-      internalID: 1572434455
+      spriteID: 8aeaab0581bae554297b559a553c7069
+      internalID: -1730766705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_6
+      name: Ghost_orange_6
       rect:
         serializedVersion: 2
         x: 0
@@ -244,20 +244,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7180de77cd8239d4b8cd9a6135864ff7
-      internalID: -1182617773
+      spriteID: 5eb761a1426062144a60f180ae1e18ee
+      internalID: -966347701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_7
+      name: Ghost_orange_7
       rect:
         serializedVersion: 2
         x: 16
@@ -265,20 +265,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35adcc2faecf59741b55579373921bdc
-      internalID: 951517407
+      spriteID: b8b5adf2ddf43f044afc57a23d8e7ddb
+      internalID: 888660965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_8
+      name: Ghost_orange_8
       rect:
         serializedVersion: 2
         x: 32
@@ -286,20 +286,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f55a28e1f3d7204b8af258873fb1d6a
-      internalID: -1163521096
+      spriteID: 92fd9973c0cd6d34ca57ce99301e16fc
+      internalID: 1225352790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_9
+      name: Ghost_orange_9
       rect:
         serializedVersion: 2
         x: 0
@@ -307,20 +307,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a5d93ae3e27258459aba4201886fc02
-      internalID: -1915347887
+      spriteID: dc56f1f3953046e43854c62415c31c56
+      internalID: -1280970234
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_10
+      name: Ghost_orange_10
       rect:
         serializedVersion: 2
         x: 16
@@ -328,20 +328,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a9dc6c23d06e9f4eaa0d51170ceaf6f
-      internalID: 1741011365
+      spriteID: 43355069c8aaa6349a95375184493d84
+      internalID: 1523035109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_11
+      name: Ghost_orange_11
       rect:
         serializedVersion: 2
         x: 32
@@ -349,20 +349,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 548498ecf4343054bbd123dd1f0b8ea4
-      internalID: -571000680
+      spriteID: 3b6fb40157d0c934d9d316254150d99c
+      internalID: -1270321617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_12
+      name: Ghost_orange_12
       rect:
         serializedVersion: 2
         x: 0
@@ -370,20 +370,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b0481362cef0b4418f1fce524b9c510
-      internalID: 886749685
+      spriteID: da326e1af8b5043438a363c5c4357356
+      internalID: -1513761563
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_13
+      name: Ghost_orange_13
       rect:
         serializedVersion: 2
         x: 16
@@ -391,20 +391,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67a9051dfcf139648940d53a487e587b
-      internalID: -474644187
+      spriteID: 970ef5dd66ee50547a799a5dd6eb692f
+      internalID: -1652248659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosty_pink_14
+      name: Ghost_orange_14
       rect:
         serializedVersion: 2
         x: 32
@@ -412,14 +412,14 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9189add5d78e444aa28430ed5d259cd
-      internalID: 1764382756
+      spriteID: bce6f478fa1c2794faf74f81e9fdee4c
+      internalID: 2005430045
       vertices: []
       indices: 
       edges: []
@@ -435,21 +435,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ghosty_pink_0: -1502457477
-      ghosty_pink_1: -1549704772
-      ghosty_pink_10: 1741011365
-      ghosty_pink_11: -571000680
-      ghosty_pink_12: 886749685
-      ghosty_pink_13: -474644187
-      ghosty_pink_14: 1764382756
-      ghosty_pink_2: 1703402677
-      ghosty_pink_3: -948033006
-      ghosty_pink_4: -363252731
-      ghosty_pink_5: 1572434455
-      ghosty_pink_6: -1182617773
-      ghosty_pink_7: 951517407
-      ghosty_pink_8: -1163521096
-      ghosty_pink_9: -1915347887
+      Ghost_orange_0: 1293742558
+      Ghost_orange_1: 1563776839
+      Ghost_orange_10: 1523035109
+      Ghost_orange_11: -1270321617
+      Ghost_orange_12: -1513761563
+      Ghost_orange_13: -1652248659
+      Ghost_orange_14: 2005430045
+      Ghost_orange_2: 415771976
+      Ghost_orange_3: -667927834
+      Ghost_orange_4: -1195766869
+      Ghost_orange_5: -1730766705
+      Ghost_orange_6: -966347701
+      Ghost_orange_7: 888660965
+      Ghost_orange_8: 1225352790
+      Ghost_orange_9: -1280970234
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
