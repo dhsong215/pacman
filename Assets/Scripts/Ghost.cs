@@ -48,4 +48,18 @@ public class Ghost : MonoBehaviour
         }
     }
 
+    // Pacman과 충돌시에 발생하는 이벤트입니다.
+    // Frightened일 때와 아닐때 두가지로 나뉩니다.
+    // GameManager 개발이 계속 미뤄져서 임시적으로 만들어 놨습니다.
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // if (collision.gameObject.layer == LayerMask.NameToLayer('Pacman')) {
+        //     if (this.Frightened.enabled) {
+        //         FindObjectOfType<GameManager>().GhostEaten(this);
+        //     } else {
+        //         FindObjectOfType<GameManager>().PacmanEaten();
+        //     }
+        // }
+    }
+
 }
