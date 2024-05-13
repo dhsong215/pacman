@@ -1,49 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement2D : MonoBehaviour
+// Rigidbody2D 컴포넌트를 필요로 하는 Movement 클래스를 정의합니다.
+// 여러 캐릭터의 움직임을 설정합니다.
+[RequireComponent(typeof(Rigidbody2D))]
+public class Movement : MonoBehaviour
 {
-    [SerializeField]
-    private float  moveTime = 0.2f; // 한칸 이동에 소요되는 시간
-    private bool   isMove = false; // 오브젝트의 이동/대기 제어 변수
+    public float speed = 8f; // 기본 이동 속도
+    public float speedMultiplier = 1f; // 속도 배수
+    public Vector2 initialDirection; // 초기 이동 방향
+    public LayerMask obstacleLayer; // 장애물 감지용 레이어 마스크
 
-    public bool MoveTo(Vector3 moveDirection)
+    public Rigidbody2D Rigidbody { get; private set; }
+    public Vector2 Direction { get; private set; } // 현재 이동 방향
+    public Vector2 NextDirection { get; private set; } // 다음 이동 방향
+    public Vector3 StartingPosition { get; private set; } // 시작 위치
+    
+    // 캐릭터 상태를 초기 상태로 리셋합니다.
+    public void ResetState()
     {
-        // 이동중이면 이동함수가 실행되지 않도록 함
-        if(isMove)
-        {
-            return false;
-        }
-
-        // 현재위치로부터 이동방향으로 1 단위 이동한 위치를 매개변수로 코루틴 함수 실행
-        StartCoroutine(SmoothGridMovement(transform.position + moveDirection));
-
-        return true;
-    }
-
-    private IEnumerator SmoothGridMovement(Vector2 endPosition)
-    {
-        Vector2 startPosition = transform.position;
-        float  percent = 0;
-
-        // moveTime시간동안 while() 반복문 호출
-        // while() 반복문을 호출하는 동안 isMove = true, 반복문 종료 시 isMove = false
-        isMove = true;
-        while ( percent < moveTime )
-        {
-            percent += Time.deltaTime;
-            // startPosition에서 endPosition까지 moveTime시간동안만 이동
-            transform.position = Vector2.Lerp(startPosition, endPosition, percent/moveTime);
-
-            yield return null;
-        }
-        isMove = false;
+        speedMultiplier = 1f;
+        Direction = initialDirection;
+        NextDirection = Vector2.zero;
+        transform.position = StartingPosition;
+        Rigidbody.isKinematic = false; // Rigidbody를 비키네틱 상태로 설정하여 물리 연산에 반응하게 합니다.
+        enabled = true;
     }
 }
-
-/* 
- * File : Movement2D.cs
- * Desc
- *  : 2D Grid 환경에서 한칸 단위로 이동 제어
- */
