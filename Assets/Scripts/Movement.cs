@@ -28,9 +28,8 @@ public class Movement : MonoBehaviour
 
     public void SetDirection(Vector2 direction, bool forced = false)
     {
-        // Only set the direction if the tile in that direction is available
-        // otherwise we set it as the next direction so it'll automatically be
-        // set when it does become available
+        // 해당 방향의 타일이 사용 가능할 때만 방향을 설정합니다. (장애물이 없을때)
+        // 아니면 다음 방향으로 설정하여 타일이 사용 가능해지면 자동으로 설정되도록 합니다.
         if (forced || !Occupied(Direction))
         {
             this.Direction = Direction;
@@ -44,7 +43,7 @@ public class Movement : MonoBehaviour
 
     public bool Occupied(Vector2 direction)
     {
-        // If no collider is hit then there is no obstacle in that direction
+        // 충돌체가 감지되지 않으면 해당 방향에 장애물이 없는 것으로 판별
         RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one * 0.75f, 0f, direction, 1.5f, obstacleLayer);
         return hit.collider != null;
     }
