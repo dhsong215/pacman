@@ -25,4 +25,27 @@ public class Movement : MonoBehaviour
         Rigidbody.isKinematic = false; // Rigidbody를 비키네틱 상태로 설정하여 물리 연산에 반응하게 합니다.
         enabled = true;
     }
+
+    public void SetDirection(Vector2 direction, bool forced = false)
+    {
+        // Only set the direction if the tile in that direction is available
+        // otherwise we set it as the next direction so it'll automatically be
+        // set when it does become available
+        if (forced || !Occupied(Direction))
+        {
+            this.Direction = Direction;
+            NextDirection = Vector2.zero;
+        }
+        else
+        {
+            NextDirection = Direction;
+        }
+    }
+
+    public bool Occupied(Vector2 direction)
+    {
+        // If no collider is hit then there is no obstacle in that direction
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one * 0.75f, 0f, direction, 1.5f, obstacleLayer);
+        return hit.collider != null;
+    }
 }
