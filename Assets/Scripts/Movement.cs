@@ -25,4 +25,26 @@ public class Movement : MonoBehaviour
         Rigidbody.isKinematic = false; // Rigidbody를 비키네틱 상태로 설정하여 물리 연산에 반응하게 합니다.
         enabled = true;
     }
+
+    public void SetDirection(Vector2 direction, bool forced = false)
+    {
+        // 해당 방향의 타일이 사용 가능할 때만 방향을 설정합니다. (장애물이 없을때)
+        // 아니면 다음 방향으로 설정하여 타일이 사용 가능해지면 자동으로 설정되도록 합니다.
+        if (forced || !Occupied(Direction))
+        {
+            this.Direction = Direction;
+            NextDirection = Vector2.zero;
+        }
+        else
+        {
+            NextDirection = Direction;
+        }
+    }
+
+    public bool Occupied(Vector2 direction)
+    {
+        // 충돌체가 감지되지 않으면 해당 방향에 장애물이 없는 것으로 판별
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one * 0.75f, 0f, direction, 1.5f, obstacleLayer);
+        return hit.collider != null;
+    }
 }
