@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class GhostChase : GhostBehaviour
 {
-        private void OnDisable()
+    private void OnDisable()
     {
       this.Ghost.Chase.Enable();
-     }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         Node node = other.GetComponent<Node>(); // 노드와 충돌시 노드 컴포넌트 가져옵니다.
