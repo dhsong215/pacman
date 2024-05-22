@@ -95,4 +95,4 @@ public class GameManager : MonoBehaviour
 
 
 
-};
+}; // GameManager 만들었음.
