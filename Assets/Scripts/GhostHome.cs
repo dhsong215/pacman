@@ -13,7 +13,17 @@ public class GhostHome : GhostBehaviour
 
     private void OnDisable()
     {
-        StartCoroutine(ExitTransition());
+        if (gameObject.activeInHierarchy) {
+            StartCoroutine(ExitTransition());
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // 집 안에서 벽에 부딛히면 반대방향으로 이동
+        if (enabled && collision.gameObject.layer == LayerMask.NameToLayer("Obstacle")) {
+            Ghost.Movement.SetDirection(-Ghost.Movement.Direction);
+        }
     }
 
     private IEnumerator ExitTransition()
@@ -30,9 +40,7 @@ public class GhostHome : GhostBehaviour
 
         // 문으로 탈출까지의 시간을 측정해서 집 안에서 맴돌게 함
         while ( elapsed < duration) {
-            Vector3 newPosition = Vector3.Lerp(position, this.inside.position, elapsed / duration);
-            newPosition.z = position.z;
-            this.Ghost.transform.position = newPosition;
+            Ghost.SetPosition(Vector3.Lerp(position, inside.position, elapsed / duration));
             elapsed += Time.deltaTime;
             yield return null;
         }
@@ -40,9 +48,7 @@ public class GhostHome : GhostBehaviour
         elapsed = 0.0f;
 
         while ( elapsed < duration) {
-            Vector3 newPosition = Vector3.Lerp(this.inside.position, this.outside.position, elapsed / duration);
-            newPosition.z = position.z;
-            this.Ghost.transform.position = newPosition;
+            Ghost.SetPosition(Vector3.Lerp(inside.position, outside.position, elapsed / duration));
             elapsed += Time.deltaTime;
             yield return null;
         }

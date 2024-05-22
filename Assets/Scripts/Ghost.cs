@@ -49,6 +49,12 @@ public class Ghost : MonoBehaviour
         }
     }
 
+    public void SetPosition(Vector3 position)
+    {
+        position.z = transform.position.z;
+        transform.position = position;
+    }
+
     // Pacman과 충돌시에 발생하는 이벤트입니다.
     // Frightened일 때와 아닐때 두가지로 나뉩니다.
     // GameManager 개발이 계속 미뤄져서 임시적으로 만들어 놨습니다.
