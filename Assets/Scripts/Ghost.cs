@@ -6,6 +6,7 @@ using UnityEngine;
 public class Ghost : MonoBehaviour
 {
     // home, scatter, chase, frightened간 서로 참조하며 전환 위해 프로퍼티 추가
+    public Rigidbody2D Rigidbody {get; private set;}
     public Movement Movement {get; private set;}
     public GhostHome Home {get; private set;}
     public GhostScatter Scatter {get; private set;}
