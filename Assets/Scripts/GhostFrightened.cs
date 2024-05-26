@@ -15,7 +15,7 @@ public class GhostFrightened : GhostBehaviour
 
         Invoke(nameof(Flash), duration / 2.0f);
     }
-
+    
     public override void Disable()
     {
         base.Disable();
@@ -56,6 +56,7 @@ public class GhostFrightened : GhostBehaviour
         this.IsEaten = false;
     }
 
+    // 팩맨에게 잡혔을 때 실행 됩니다.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Pacman")) {
@@ -65,6 +66,7 @@ public class GhostFrightened : GhostBehaviour
         }
     }
 
+    // frightened 해제 되면 실행됩니다.
     private void OnTriggerEnter2D(Collider2D other)
     {
         Node node = other.GetComponent<Node>(); // 노드와 충돌시 노드 컴포넌트 가져옵니다.
