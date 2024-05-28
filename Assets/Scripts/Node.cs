@@ -4,25 +4,28 @@ using UnityEngine;
 public class Node : MonoBehaviour
 {
     public LayerMask obstacleLayer;
-    public List<Vector2> AvailableDirections { get; private set; }
+    public readonly List<Vector2> availableDirections = new();
 
     private void Start()
     {
-        this.AvailableDirections = new List<Vector2>();
+        availableDirections.Clear();
 
+        // Check if the direction is available by box casting to see if we hit a wall.
+        // If the direction is available, it is added to the list.
         CheckAvailableDirection(Vector2.up);
         CheckAvailableDirection(Vector2.down);
         CheckAvailableDirection(Vector2.left);
         CheckAvailableDirection(Vector2.right);
     }
 
-    // 제자리 회전을 방지하기 위해 진행 가능 방향을 확인합니다.
     private void CheckAvailableDirection(Vector2 direction)
     {
-        RaycastHit2D hit = Physics2D.BoxCast(this.transform.position, Vector2.one * 0.5f, 0.0f, direction, 1.0f, this.obstacleLayer);
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one * 0.5f, 0f, direction, 1f, obstacleLayer);
 
+        // If no collider is hit, there is no obstacle in that direction
         if (hit.collider == null) {
-            this.AvailableDirections.Add(direction);
+            availableDirections.Add(direction);
         }
     }
+
 }
