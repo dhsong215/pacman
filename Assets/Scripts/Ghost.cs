@@ -6,6 +6,7 @@ using UnityEngine;
 public class Ghost : MonoBehaviour
 {
     // home, scatter, chase, frightened간 서로 참조하며 전환 위해 프로퍼티 추가
+    public Rigidbody2D Rigidbody {get; private set;}
     public Movement Movement {get; private set;}
     public GhostHome Home {get; private set;}
     public GhostScatter Scatter {get; private set;}
@@ -46,6 +47,12 @@ public class Ghost : MonoBehaviour
         if (this.initialBehaviour != null) {
             this.initialBehaviour.Enable();
         }
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        position.z = transform.position.z;
+        transform.position = position;
     }
 
     // Pacman과 충돌시에 발생하는 이벤트입니다.
