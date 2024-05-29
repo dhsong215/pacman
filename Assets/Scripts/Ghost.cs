@@ -1,65 +1,78 @@
 using UnityEngine;
 
-/// <summary>
-/// 일반적인(home, scatter, chase, frightened) 고스트의 행동제어
-/// </summary>
+// 실행 순서를 -10으로 설정하여 Movement 스크립트보다 먼저 실행되게 함
+[DefaultExecutionOrder(-10)]
+// Movement 컴포넌트가 반드시 필요함을 명시
+[RequireComponent(typeof(Movement))]
 public class Ghost : MonoBehaviour
 {
-    // home, scatter, chase, frightened간 서로 참조하며 전환 위해 프로퍼티 추가
-    public Movement Movement {get; private set;}
-    public GhostHome Home {get; private set;}
-    public GhostScatter Scatter {get; private set;}
-    public GhostChase Chase {get; private set;}
-    public GhostFrightened Frightened {get; private set;}
-    public GhostBehaviour initialBehaviour;
+    // 고스트의 다양한 상태 및 행동 컴포넌트
+    public Movement movement { get; private set; }
+    public GhostHome home { get; private set; }
+    public GhostScatter scatter { get; private set; }
+    public GhostChase chase { get; private set; }
+    public GhostFrightened frightened { get; private set; }
+    // 초기 상태를 설정할 고스트 행동
+    public GhostBehavior initialBehavior;
+    // 고스트의 타겟
     public Transform target;
-
-    // 고스트의 점수
+    // 고스트를 잡았을 때 얻는 점수
     public int points = 200;
 
     private void Awake()
     {
-        this.Movement = GetComponent<Movement>();
-        this.Home = GetComponent<GhostHome>();
-        this.Scatter = GetComponent<GhostScatter>();
-        this.Chase = GetComponent<GhostChase>();
-        this.Frightened = GetComponent<GhostFrightened>();
+        // 필요한 컴포넌트를 가져옴
+        movement = GetComponent<Movement>();
+        home = GetComponent<GhostHome>();
+        scatter = GetComponent<GhostScatter>();
+        chase = GetComponent<GhostChase>();
+        frightened = GetComponent<GhostFrightened>();
     }
 
-    public void Start()
+    private void Start()
     {
+        // 초기 상태로 리셋
         ResetState();
     }
 
     public void ResetState()
     {
-        this.gameObject.SetActive(true);
-        this.Movement.ResetState();
-        this.Scatter.Enable();
-        this.Frightened.Disable();
-        this.Chase.Disable();
+        // 고스트를 활성화하고 모든 상태 초기화
+        gameObject.SetActive(true);
+        movement.ResetState();
 
-        if (this.Home != this.initialBehaviour) {
-            this.Home.Disable();
+        // 초기 상태 설정
+        frightened.Disable();
+        chase.Disable();
+        scatter.Enable();
+
+        if (home != initialBehavior) {
+            home.Disable();
         }
 
-        if (this.initialBehaviour != null) {
-            this.initialBehaviour.Enable();
+        if (initialBehavior != null) {
+            initialBehavior.Enable();
         }
     }
 
-    // Pacman과 충돌시에 발생하는 이벤트입니다.
-    // Frightened일 때와 아닐때 두가지로 나뉩니다.
-    // GameManager 개발이 계속 미뤄져서 임시적으로 만들어 놨습니다.
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void SetPosition(Vector3 position)
     {
-        // if (collision.gameObject.layer == LayerMask.NameToLayer('Pacman')) {
-        //     if (this.Frightened.enabled) {
-        //         FindObjectOfType<GameManager>().GhostEaten(this);
-        //     } else {
-        //         FindObjectOfType<GameManager>().PacmanEaten();
-        //     }
-        // }
+        // z-위치를 유지하며 위치 설정 (z-위치는 그리기 순서를 결정)
+        position.z = transform.position.z;
+        transform.position = position;
     }
 
+    // 충돌 감지와 관련된 처리는 GameManager 스크립트에서 관리하도록 함
+    // private void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     // Pacman과의 충돌 시 처리 로직
+    //     // if (collision.gameObject.layer == LayerMask.NameToLayer("Pacman"))
+    //     // {
+    //     //     if (frightened.enabled) {
+    //     //         GameManager.Instance.GhostEaten(this);
+    //     //     } else {
+    //     //         GameManager.Instance.PacmanEaten();
+    //     //     }
+    //     // }
+    // }
 }
