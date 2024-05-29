@@ -1,32 +1,36 @@
 using UnityEngine;
 
-public class GhostScatter : GhostBehaviour
+public class GhostScatter : GhostBehavior
 {
-  private void OnDisable()
-  {
-    this.Ghost.Chase.Enable();
-  }
-  private void OnTriggerEnter2D(Collider2D other)
-  {
-    Node node = other.GetComponent<Node>(); // 노드와 충돌시 노드 컴포넌트 가져옵니다.
-
-    if (node != null && this.enabled && !this.Ghost.Frightened.enabled) // frightened모드가 우선 이여서 조건에 추가
+    private void OnDisable()
     {
-      // 방향을 랜덤하게 선택
-      int index = Random.Range(0, node.AvailableDirections.Count);
-
-      // 선택된 방향이 현재 고스트의 이동 방향의 반대(뒤)이고, 사용 가능한 방향이 1개 이상일 경우
-      if (node.AvailableDirections[index] == -this.Ghost.Movement.Direction && node.AvailableDirections.Count > 1)
-      {
-        index++;
-        
-        // 직진
-        if (index >= node.AvailableDirections.Count) {
-          index = 0;
-        }
-      }
-
-      this.Ghost.Movement.SetDirection(node.AvailableDirections[index]);
+        ghost.chase.Enable();
     }
-  }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Node node = other.GetComponent<Node>();
+
+        // 유령이 frightened일 동안에는 아무것도 하지 않음
+        if (node != null && enabled && !ghost.frightened.enabled)
+        {
+            // 가능한 방향 중에서 무작위로 하나 선택
+            int index = Random.Range(0, node.availableDirections.Count);
+
+            // 왔던 방향으로 돌아가지 않도록
+            // 가능한 다음 방향으로 인덱스를 증가시킴
+            if (node.availableDirections.Count > 1 && node.availableDirections[index] == -ghost.movement.direction)
+            {
+                index++;
+
+                // 인덱스가 넘쳤을 경우 처음으로 돌아감
+                if (index >= node.availableDirections.Count) {
+                    index = 0;
+                }
+            }
+
+            ghost.movement.SetDirection(node.availableDirections[index]);
+        }
+    }
+
 }
