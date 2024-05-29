@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class GhostHome : GhostBehaviour
+public class GhostHome : GhostBehavior
 {
     public Transform inside;
     public Transform outside;
@@ -13,6 +13,7 @@ public class GhostHome : GhostBehaviour
 
     private void OnDisable()
     {
+        // 객체가 파괴될 때 오류를 방지하기 위해 활성 상태를 확인
         if (gameObject.activeInHierarchy) {
             StartCoroutine(ExitTransition());
         }
@@ -20,42 +21,45 @@ public class GhostHome : GhostBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // 집 안에서 벽에 부딛히면 반대방향으로 이동
+        // 유령이 벽에 부딪힐 때마다 방향을 반대로 하여 유령이 집 안에서 튕기는 효과를 만듭니다
         if (enabled && collision.gameObject.layer == LayerMask.NameToLayer("Obstacle")) {
-            Ghost.Movement.SetDirection(-Ghost.Movement.Direction);
+            ghost.movement.SetDirection(-ghost.movement.direction);
         }
     }
 
     private IEnumerator ExitTransition()
     {
-        // 고스트가 집의 중앙에 있을때 위로 빠져나가게 함
-        this.Ghost.Movement.SetDirection(Vector2.up, true);
-        this.Ghost.Movement.Rigidbody.isKinematic = true;
-        this.Ghost.Movement.enabled = false;
+        // 위치를 수동으로 애니메이션화하는 동안 움직임을 끕니다
+        ghost.movement.SetDirection(Vector2.up, true);
+        ghost.movement.rigidbody.isKinematic = true;
+        ghost.movement.enabled = false;
 
-        Vector3 position = this.transform.position;
+        Vector3 position = transform.position;
 
         float duration = 0.5f;
-        float elapsed = 0.0f;
+        float elapsed = 0f;
 
-        // 문으로 탈출까지의 시간을 측정해서 집 안에서 맴돌게 함
-        while ( elapsed < duration) {
-            Ghost.SetPosition(Vector3.Lerp(position, inside.position, elapsed / duration));
+        // 시작 지점으로 애니메이션화합니다
+        while (elapsed < duration)
+        {
+            ghost.SetPosition(Vector3.Lerp(position, inside.position, elapsed / duration));
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        elapsed = 0.0f;
+        elapsed = 0f;
 
-        while ( elapsed < duration) {
-            Ghost.SetPosition(Vector3.Lerp(inside.position, outside.position, elapsed / duration));
+        // 유령 집을 나가는 애니메이션을 만듭니다
+        while (elapsed < duration)
+        {
+            ghost.SetPosition(Vector3.Lerp(inside.position, outside.position, elapsed / duration));
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        // 고스트가 집을 나오고 좌우 방향중 랜덤하게 움직임
-        this.Ghost.Movement.SetDirection(new Vector2(Random.value < 0.5f ? -1.0f : 1.0f, 0.0f), true);
-        this.Ghost.Movement.Rigidbody.isKinematic = true;
-        this.Ghost.Movement.enabled = false;
+        // 왼쪽 또는 오른쪽의 임의 방향을 선택하고 움직임을 다시 활성화합니다
+        ghost.movement.SetDirection(new Vector2(Random.value < 0.5f ? -1f : 1f, 0f), true);
+        ghost.movement.rigidbody.isKinematic = false;
+        ghost.movement.enabled = true;
     }
 }

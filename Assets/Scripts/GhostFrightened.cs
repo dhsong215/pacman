@@ -1,87 +1,101 @@
 using UnityEngine;
 
-public class GhostFrightened : GhostBehaviour
+public class GhostFrightened : GhostBehavior
 {
-    public SpriteRenderer frightenedBody;
-    public SpriteRenderer normalBody;
+    // 유령의prefab을 제어하는 스프라이트들
+    public SpriteRenderer body;
+    public SpriteRenderer eyes;
+    public SpriteRenderer blue;
+    public SpriteRenderer white;
 
-    public bool IsEaten { get; private set; }
+    private bool eaten;
 
+    // 지정된 지속 시간 동안 frightened 모드를 활성화
     public override void Enable(float duration)
     {
         base.Enable(duration);
 
-        // ...frightened 스프라이트 활성화...
+        // 유령의 모습을 frightened 모드로 변경
+        body.enabled = false;
+        eyes.enabled = false;
+        blue.enabled = true;
+        white.enabled = false;
 
-        Invoke(nameof(Flash), duration / 2.0f);
+        // frightened 모드 지속 시간의 절반 후에 깜박이기 시작
+        Invoke(nameof(Flash), duration / 2f);
     }
-    
+
+    // frightened 모드를 비활성화하고 모습을 되돌림
     public override void Disable()
     {
         base.Disable();
 
-        // ...frightened 스프라이트 비활성화...(animation)
+        // 유령의 모습을 정상으로 되돌림
+        body.enabled = true;
+        eyes.enabled = true;
+        blue.enabled = false;
+        white.enabled = false;
     }
 
+    // 유령이 팩맨에게 먹혔을 때 처리
+    private void Eaten()
+    {
+        eaten = true;
+        // 유령을 유령 집으로 되돌림
+        ghost.SetPosition(ghost.home.inside.position);
+        ghost.home.Enable(duration);
+
+        // 유령의 모습을 눈만 보이도록 변경 (팩맨에 먹혔으ㄹ때ㅔ)
+        body.enabled = false;
+        eyes.enabled = true;
+        blue.enabled = false;
+        white.enabled = false;
+    }
+
+    // frightened 모드의 끝부분에서 유령의 모습을 깜박이게 함
     private void Flash()
     {
-        if (!this.IsEaten)
+        if (!eaten)
         {
-            // ...frightened 스프라이트 비활성화...
+            blue.enabled = false;
+            white.enabled = true;
+            white.GetComponent<AnimatedSprite>().Restart();
         }
     }
 
-    private void Eaten() 
-    {
-        this.IsEaten = true;
-        
-        Vector3 position = this.Ghost.Home.inside.position;
-        position.z = this.Ghost.transform.position.z;
-        this.Ghost.transform.position = position;
-
-        this.Ghost.Home.Enable(this.duration);
-
-        // ...frightened 스프라이트 비활성화...
-    }
-
+    // frightened 모드가 활성화될 때 설정
     private void OnEnable()
     {
-        this.Ghost.Movement.speedMultiplier = 0.5f; // frightened 모드일때 이동속도 줄어듬.
-        this.IsEaten = false;
+        // frightened 스프라이트의 애니메이션을 재시작
+        blue.GetComponent<AnimatedSprite>().Restart();
+        // 유령의 이동 속도를 늦춤
+        ghost.movement.speedMultiplier = 0.8f;
+        eaten = false;
     }
 
+    // frightened 모드가 비활성화될 때 정리
     private void OnDisable()
     {
-        this.Ghost.Movement.speedMultiplier = 1.0f;
-        this.IsEaten = false;
+        // 유령의 이동 속도를 되돌림
+        ghost.movement.speedMultiplier = 1f;
+        eaten = false;
     }
 
-    // 팩맨에게 잡혔을 때 실행 됩니다.
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Pacman")) {
-            if (this.enabled) {
-                Eaten();
-            }
-        }
-    }
-
-    // frightened 해제 되면 실행됩니다.
+    // frightened 모드에서 이동할 방향을 결정
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Node node = other.GetComponent<Node>(); // 노드와 충돌시 노드 컴포넌트 가져옵니다.
+        Node node = other.GetComponent<Node>();
 
-        // frightened모드 우선 수행
-        if (node != null && this.enabled)
+        if (node != null && enabled)
         {
             Vector2 direction = Vector2.zero;
             float maxDistance = float.MinValue;
 
-            // 팩맨에게 가장 가까운 방향을 foreach로 탐색
-            foreach (Vector2 availableDirection in node.AvailableDirections)
+            // 팩맨으로부터 가장 멀리 이동하는 방향을 찾음
+            foreach (Vector2 availableDirection in node.availableDirections)
             {
-                Vector3 newPosition = this.transform.position + new Vector3(availableDirection.x, availableDirection.y, 0.0f);
-                float distance = (this.Ghost.target.position - newPosition).sqrMagnitude;
+                Vector3 newPosition = transform.position + new Vector3(availableDirection.x, availableDirection.y);
+                float distance = (ghost.target.position - newPosition).sqrMagnitude;
 
                 if (distance > maxDistance)
                 {
@@ -90,8 +104,20 @@ public class GhostFrightened : GhostBehaviour
                 }
             }
 
-            this.Ghost.Movement.SetDirection(direction);
-
+            // 유령의 이동 방향을 설정
+            ghost.movement.SetDirection(direction);
         }
     }
+
+    // 팩맨과의 충돌을 처리
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Pacman"))
+        {
+            if (enabled) {
+                Eaten();
+            }
+        }
+    }
+
 }
