@@ -20,10 +20,9 @@ public class GameManager : MonoBehaviour
     //아무키나 눌렀을 때 다시시작.
     private void Update()
     {
-        if (this.lives <= 0 && Input.anyKeyDown)
-        {
+        if (this.lives <= 0 && Input.anyKeyDown) {
             NewGame();
-
+            
         }
     }
 
@@ -36,8 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void NewRound()
     {
-        foreach (Transform pellet in this.pallets)
-        {
+        foreach(Transform pellet in this.pallets){
             pellet.gameObject.SetActive(true);
         }
 
@@ -86,7 +84,7 @@ public class GameManager : MonoBehaviour
         this.pacman.gameObject.SetActive(false);
 
         SetLives(this.lives - 1);
-        if (this lives > 0){
+        if(this lives > 0){
             Invoke(nameof(ResetState), 3.0f);
         }else
         {
@@ -94,3 +92,4 @@ public class GameManager : MonoBehaviour
         }
     }
 }
+
