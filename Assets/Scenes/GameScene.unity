@@ -489,6 +489,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost_Pink
       objectReference: {fileID: 0}
+    - target: {fileID: 9161651726675865627, guid: c306240eb95004930b6c145a95e91c83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10612,3 +10616,4 @@ SceneRoots:
   - {fileID: 165808913}
   - {fileID: 971955142}
   - {fileID: 1847992383}
+  - {fileID: 1577918279}
