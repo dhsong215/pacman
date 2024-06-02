@@ -7,7 +7,7 @@ public class Pacman : MonoBehaviour
 
     private void Awake()
     {
-        this.movement = GetComponent<movement>();
+        this.movement = GetComponent<Movement>();
     }
 
     private void Update()
@@ -27,5 +27,11 @@ public class Pacman : MonoBehaviour
 
         float angle = Mathf.Atan2(this.movement.direction.y, this.movement.direction.x);
         this.transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
+    }
+
+    public void ResetState()
+    {
+        this.gameObject.SetActive(true);
+        this.movement.ResetState();
     }
 }
