@@ -3,15 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
-    public void GoToScene(string sceneName)
-    {
+    public void GoToScene(string sceneName){
         SceneManager.LoadScene(sceneName);
     }
 
-    public void QuitApp
-    {
+    public void QuitApp(){
         Application.Quit();
-        Debug.Log("Applicationhas quit.");
+        Debug.Log("Application has quit");
     }
 }
