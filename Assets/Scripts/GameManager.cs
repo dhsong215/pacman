@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         ResetState();
     }
 
-    public void ResetState()
+    private void ResetState()
     {
         ResetGhostMultiplier();
 
