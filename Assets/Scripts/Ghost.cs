@@ -63,16 +63,16 @@ public class Ghost : MonoBehaviour
     }
 
     // 충돌 감지와 관련된 처리는 GameManager 스크립트에서 관리하도록 함
-    // private void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     // Pacman과의 충돌 시 처리 로직
-    //     // if (collision.gameObject.layer == LayerMask.NameToLayer("Pacman"))
-    //     // {
-    //     //     if (frightened.enabled) {
-    //     //         GameManager.Instance.GhostEaten(this);
-    //     //     } else {
-    //     //         GameManager.Instance.PacmanEaten();
-    //     //     }
-    //     // }
-    // }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Pacman과의 충돌 시 처리 로직
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Pacman"))
+        {
+            if (frightened.enabled) {
+                GameManager.Instance.GhostEaten(this);
+            } else {
+                GameManager.Instance.PacmanEaten();
+            }
+        }
+    }
 }
