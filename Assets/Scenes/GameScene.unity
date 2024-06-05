@@ -205,7 +205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6083570833873024877, guid: ae741a13a0eab4e8dab727d2b1a7049c, type: 3}
       propertyPath: m_Radius
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6902910946104542645, guid: ae741a13a0eab4e8dab727d2b1a7049c, type: 3}
       propertyPath: m_Constraints
@@ -565,7 +565,7 @@ PrefabInstance:
       objectReference: {fileID: 1615361750}
     - target: {fileID: 5976462071135137491, guid: c306240eb95004930b6c145a95e91c83, type: 3}
       propertyPath: m_Radius
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6436091405650680843, guid: c306240eb95004930b6c145a95e91c83, type: 3}
       propertyPath: m_Constraints
@@ -9527,7 +9527,7 @@ PrefabInstance:
       objectReference: {fileID: 1847992396}
     - target: {fileID: 5179498846004964312, guid: 378c398d0a3244c81a9b128684cd931e, type: 3}
       propertyPath: m_Radius
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5494524982559103232, guid: 378c398d0a3244c81a9b128684cd931e, type: 3}
       propertyPath: m_Constraints
@@ -10508,11 +10508,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4957897663336457904, guid: 4e8c483247119d249b251ab58259a63e, type: 3}
       propertyPath: m_Radius
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8725704009110172588, guid: 4e8c483247119d249b251ab58259a63e, type: 3}
       propertyPath: m_Name
       value: Pacman
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725704009110172588, guid: 4e8c483247119d249b251ab58259a63e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10576,7 +10580,7 @@ PrefabInstance:
       objectReference: {fileID: 1717289517}
     - target: {fileID: 4631103040338411931, guid: 50e1e3e2cce2149a99d752622eeb8c11, type: 3}
       propertyPath: m_Radius
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5468993049755415363, guid: 50e1e3e2cce2149a99d752622eeb8c11, type: 3}
       propertyPath: m_Constraints

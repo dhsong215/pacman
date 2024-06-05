@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     private void NewRound()
     {
-        foreach (Transform pellet in this.pellets){
+        foreach (Transform pellet in pellets){
             pellet.gameObject.SetActive(true);
         }
 
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
             this.ghosts[i].ResetState();
         }
 
-        this.pacman.ResetState();
+        pacman.ResetState();
     }
 
     private void GameOver()
