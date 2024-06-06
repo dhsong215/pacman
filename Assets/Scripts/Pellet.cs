@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Pellets : MonoBehaviour /* MonoBehaviour을 상속받은 'Pellet' 클래스 
+public class Pellet : MonoBehaviour /* MonoBehaviour을 상속받은 'Pellet' 클래스 
 : 개임 내에서 플레이어가 상속받을 수 있는 아이템을 나타냄. */
 {
 
